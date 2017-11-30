@@ -1,0 +1,7 @@
+@model bool
+
+<div class="checkbox d-i-b">
+    @Html.CheckBoxFor(m=> m,  (object)ViewBag.htmlAttributes)
+    <label for="@Html.NameFor(m=> m)">
+    </label>
+</div>

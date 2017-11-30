@@ -1,0 +1,36 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/awesome-bootstrap-checkbox.css",
+      "wwwroot/css/bootstrap-datetimepicker.css",
+      "wwwroot/css/dataTables.bootstrap.css",
+      "wwwroot/css/select2.css",
+      "wwwroot/css/select2-bootstrap.css",
+      "wwwroot/css/generics.css",
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/bootstrap-datetimepicker.js",
+      "wwwroot/js/jquery.dataTables.js",
+      "wwwroot/js/dataTables.bootstrap.js",
+      "wwwroot/js/js.cookie.js",
+      "wwwroot/js/select2.js",
+      "wwwroot/js/select2/dist/js/i18n/tr.js",
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/awesome-bootstrap-checkbox.min.css",
+    "inputFiles": [
+      "wwwroot/css/awesome-bootstrap-checkbox.css"
+    ]
+  }
+]

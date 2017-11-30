@@ -1,0 +1,12 @@
+﻿@model (string message, Exception exc)
+@{
+    ViewData["Title"] = "Hata";
+}
+
+<h2>@ViewData["Title"]</h2>
+<div class="alert alert-danger">
+    @Html.Raw(Model.message)
+    <pre>
+@Html.Raw(Model.exc?.GetOnlyMessages(false))
+</pre>
+</div>

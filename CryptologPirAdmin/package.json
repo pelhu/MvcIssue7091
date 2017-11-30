@@ -1,0 +1,9 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "autosize": "^3.0.20",
+    "gulp": "^3.9.1",
+    "gulp-print": "^2.0.1"
+  }
+}

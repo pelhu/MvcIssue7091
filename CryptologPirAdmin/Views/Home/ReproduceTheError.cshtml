@@ -1,0 +1,51 @@
+﻿@model CryptologPirAdmin.Models.TestViewModel.TestViewModel
+@{
+    ViewData["Title"] = "CryptologPir Göstergeleri";
+}
+@section head{
+    <style>
+        body .container.body-content {
+            max-width: inherit;
+            width: 100%;
+        }
+
+        #result-container {
+            position: relative;
+            /*margin-right: 210px;*/ /*Taglar geldiğinde açılacak*/
+        }
+
+        #tag-container {
+            position: absolute;
+            right: 0;
+            width: 200px;
+            display: none; /*Taglar geldiğinde silinecek*/
+        }
+
+        .detailStatus {
+            white-space: pre;
+            max-width: 800px;
+            overflow: auto;
+        }
+    </style>
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<form method="post">
+    @foreach (var kv in Model.Dict)
+    {
+        string name = $"{Html.NameFor(m=>m.Dict)}[{kv.Key}]";
+        string id = System.Text.RegularExpressions.Regex.Replace(name, "[^a-zA-Z0-9]", "_");
+
+        <div class="form-group">
+            <label for="@id" class="col-md-2 control-label">@kv.Key</label>
+            <div class="col-md-10" style="min-height: 34px;">
+                <input name="@name" id="@id" class="form-control" value="@kv.Value" type="number" />
+            </div>
+        </div>
+    }
+
+    <input type="submit" value="Save" />
+    <span class="text-primary">@Model.Result</span>
+
+</form>

@@ -1,0 +1,35 @@
+﻿@model CryptologPirAdmin.Models.TestViewModel.TestViewModel
+@{
+    ViewData["Title"] = "CryptologPir Göstergeleri";
+}
+@section head{
+    <style>
+        body .container.body-content {
+            max-width: inherit;
+            width: 100%;
+        }
+
+        #result-container {
+            position: relative;
+            /*margin-right: 210px;*/ /*Taglar geldiğinde açılacak*/
+        }
+
+        #tag-container {
+            position: absolute;
+            right: 0;
+            width: 200px;
+            display: none; /*Taglar geldiğinde silinecek*/
+        }
+
+        .detailStatus {
+            white-space: pre;
+            max-width: 800px;
+            overflow: auto;
+        }
+    </style>
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<a asp-action="ReproduceTheError">Reproduce the error</a><br />
+<a asp-action="NormalWork">Normal work</a>

@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CryptologPir Yönetim</title>
+    <script type="text/javascript">
+        var startScripts = [];
+    </script>
+
+    <environment names="Development">
+        <link href="~/css/bootstrap/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/bootstrap-datetimepicker.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/css/awesome-bootstrap-checkbox.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/generics.css" rel="stylesheet" asp-append-version="true" />
+        @*<link href="~/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />*@
+        <link href="~/css/dataTables.bootstrap.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/select2.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/select2-bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/bootstrap-select.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">CryptologPir Yönetimi</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Ana sayfa</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ayarlar <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            @*<li><a asp-controller="config" asp-action="general">Ana ayarlar</a></li>*@
+                            <li><a asp-controller="config" asp-action="piranha">Piranha ayarları</a></li>
+                            <li><a asp-controller="WorkerServer" asp-action="Index">Worker servers</a></li>
+                        </ul>
+                    </li>
+                    @*<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+                </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Sign out</a></li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - CryptologPir</p>
+        </footer>
+    </div>
+
+    <environment names="Development">
+        <script src="~/js/jquery.js" asp-append-version="true"></script>
+        <script src="~/js/moment.js" asp-append-version="true"></script>
+        <script src="~/js/moment/locale/tr.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-datetimepicker.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-select.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-select/dist/js/i18n/defaults-tr_TR.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.dataTables.js" asp-append-version="true"></script>
+        <script src="~/js/dataTables.bootstrap.js" asp-append-version="true"></script>
+        <script src="~/js/URI.js" asp-append-version="true"></script>
+        <!-- #region validation -->
+        <script src="~/js/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <!-- #endregion -->
+        <script src="~/js/js.cookie.js" asp-append-version="true"></script>
+        <script src="~/js/select2.js"></script>
+        <script src="~/js/select2/dist/js/i18n/tr.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/js/moment.min.js" asp-append-version="true"></script>
+        <script src="~/js/moment/locale/tr.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-datetimepicker.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-select.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-select/dist/js/i18n/defaults-tr_TR.min.js" asp-append-version="true"></script>        
+        <!-- #region validation -->
+        <script src="~/js/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+        <!-- #endregion -->
+        <script src="~/js/URI.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

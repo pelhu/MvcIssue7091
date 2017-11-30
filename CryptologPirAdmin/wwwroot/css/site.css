@@ -1,0 +1,246 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea,
+.input-group,
+.items-container,
+.bootstrap-select {
+    max-width: 280px;
+}
+
+    input.max,
+    select.max,
+    textarea.max,
+    .input-group.max,
+    div.max {
+        max-width: 580px;
+    }
+
+    input.min,
+    select.min,
+    textarea.min,
+    .input-group.min,
+    .items-container.min,
+    .bootstrap-select.min {
+        max-width: 150px;
+    }
+
+    input.mikro,
+    select.mikro,
+    textarea.mikro,
+    .input-group.mikro,
+    .items-container.mikro,
+    .bootstrap-select.mikro {
+        max-width: 100px;
+    }
+
+label.required:after {
+    content: "*";
+    font-size: 23px;
+    /* margin-left: 3px; */
+    /* margin-top: 5px; */
+    position: absolute;
+    top: 4px;
+    right: 2px;
+    color: #FF6868;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+
+    input.max,
+    select.max,
+    textarea.max,
+    .input-group.max {
+        max-width: 280px;
+    }
+
+    label.required:after {
+        top: 0;
+    }
+}
+
+.form-inline .form-control, .form-inline .input-group {
+    width: 100%;
+}
+
+img.loader {
+    margin: -3px 0;
+}
+
+.form-inline .input-group.input-group-inline .input-group-btn {
+    width: 1%;
+}
+
+.validation {
+    display: block;
+}
+
+.input-validation {
+    display: table;
+    width: 100%;
+    max-width: 280px;
+}
+
+
+@media (min-width: 768px) {
+    .input-validation {
+        display: inline-table;
+    }
+}
+
+a.gridBtn {
+    padding: 5px;
+    text-decoration: none;
+    opacity: .7;
+}
+
+    a.gridBtn:hover {
+        opacity: 1;
+    }
+
+    a.gridBtn .fa {
+        font-size: 1.3em;
+    }
+
+    a.gridBtn[disabled] {
+        color: gray;
+        pointer-events: none;
+    }
+
+/*#region BootstrapSelect */
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: auto;
+}
+
+.bootstrap-select.btn-group:not(.input-group-btn), .bootstrap-select.btn-group[class*="col-"] {
+    display: block;
+}
+/*#endregion */
+
+div.items-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    padding: 6px 6px 4px;
+    max-height: 250px;
+    overflow-y: auto;
+    min-height: 34px;
+}
+
+    div.items-container .finded-item {
+        text-decoration: none;
+        padding: 2px 4px;
+    }
+
+        div.items-container .finded-item:hover {
+            background-color: #eee;
+        }
+
+.span-item {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 3px 6px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+    .span-item .btDelete {
+        float: right;
+    }
+
+.table-narrow {
+    width: auto !important;
+}
+
+.dataTables_empty {
+    color: #bbb;
+}
+
+.input-group .btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.dl-horizontal dd {
+    margin-bottom: 7px;
+}
+
+/*#region select2 */
+.select2-selection--multiple .select2-selection__choice {
+    float: none !important;
+    margin-right: 6px !important;
+}
+
+    .select2-selection--multiple .select2-selection__choice .label, .select2-dropdown .label {
+        float: right;
+        margin: 3px 2px 0 0;
+    }
+
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+    white-space: normal;
+}
+
+.select2-selection__choice__remove {
+    float: right;
+}
+
+.select2-selection.select2-selection--multiple {
+    max-height: 150px;
+    overflow-y: auto;
+}
+.select2-container--bootstrap .select2-results__option[aria-disabled=true] {
+    color: #aaa;
+    /*background-color: #eee;*/
+}
+
+.select2-selection--single {
+    height: 100% !important;
+}
+
+.select2-selection__rendered {
+    word-wrap: break-word !important;
+    text-overflow: inherit !important;
+    white-space: normal !important;
+}
+/*#endregion */
+
+/*#region awesome checkbox */
+.checkbox label {
+    padding-left: 0px;
+}
+
+    .checkbox label::before, .checkbox label::after {
+        top: 1px;
+    }
+    
+/*#endregion */

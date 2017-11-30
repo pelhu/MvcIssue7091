@@ -1,0 +1,138 @@
+﻿@using CryptologPirLib.Mongo.Models
+<!-- Modal -->
+<div class="modal fade" id="tagSelectorMdl" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Bir Etiket seçiniz</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="tagSelectorSearch" placeholder="filtreleme" class="form-control m-b-5 f-r" />
+                <img src="~/images/loader.gif" id="tagSelectorWaiter" class="p-absolute" />
+                <select size="15" style="width:100%; max-width:none" id="tagSelectorSelect" class="form-control"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="tagSelectorOk">Tamam</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">İptal</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var onTagAdd;
+    var onTagRemove;
+    var showTagSelector;
+    startScripts.push(function () {
+
+        $('#tagSelectorMdl').on('shown.bs.modal', function () {
+            $('#tagSelectorSearch').focus();
+        })
+
+        $('#tagSelectorOk').click(function (e) {
+            e.preventDefault();
+
+            var selected = $('#tagSelectorSelect').find(':selected');
+            if (!selected.length) {
+                alert("Devam etmek için bir etiket seçmelisisniz.");
+            }
+            else {
+                if (onTagSelected && typeof (onTagSelected) === 'function') {
+                    if (onTagSelected(selected.val(), selected.data('text')) != false) {
+                        $('#tagSelectorMdl').modal('hide');
+                    }
+                }
+            }
+        });
+
+        $('#tagSelectorSelect').dblclick(function (e) {
+            e.preventDefault();
+            $('#tagSelectorOk').click();
+        });
+
+        $('#tagSelectorSelect').keypress(function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                $('#tagSelectorOk').click();
+            }
+        });
+
+        $('#tagSelectorSearch').on("change keyup input", function () {
+            $('#tagSelectorSelect option[value^=""]').remove();
+            var searchStr = $(this).val();
+            var pattern = searchStr.toLowerCase();
+            $('#tagSelectorSelect option').each(function () {
+                var $this = $(this);
+                if (pattern == '' || $this.text().toLowerCase().match(pattern)) {
+                    $this.show();
+                }
+                else {
+                    $this.hide();
+                }
+            });
+            if (searchStr && $('#tagSelectorSelect option:visible').filter(function () { return $(this).text().toLowerCase() == pattern; }).length == 0) {
+                $('#tagSelectorSelect').prepend($('<option>').val('').data('text', searchStr).text('(YENİ ETİKET) ' + searchStr));
+            }
+        })
+
+        $('#tagSelectorSelect').keydown(function (e) {
+            if (e.key == "ArrowUp") {
+                var options = $('#tagSelectorSelect').find('option');
+                if (!options.length || options.first().is(':selected')) {
+                    $('#tagSelectorSearch').focus();
+                }
+            }
+        });
+
+        $('#tagSelectorSearch').keydown(function (e) {
+            if (e.key == "ArrowDown" && $('#tagSelectorSelect').find('option:not(:disabled)').length) {
+                $('#tagSelectorSelect').focus();
+                if (!$('#tagSelectorSelect option:selected').length) {
+                    $('#tagSelectorSelect option:not(:disabled)').first().prop('selected', true);
+                }
+            }
+        });
+
+        var setDisableds = function (tagsToDisable) {
+            $('#tagSelectorSelect').find('option').each(function () {
+                var $that = $(this)
+                if (!tagsToDisable || $.inArray($that.val(), tagsToDisable)==-1) {
+                    $that.removeAttr('disabled');
+                }
+                else {
+                    $that.attr('disabled', '');
+                    $that.prop('selected', false);
+                }
+            });
+        }
+
+        showTagSelector = function (onSelect, selectedTagID, tagIDToExclude, tagsToDisable, showRoot) {
+            onTagSelected = onSelect;
+            var $sel = $('#tagSelectorSelect');
+
+            if ($sel.find('option').length == 0) {
+                $.getJSON('@Url.Action("GetTags","Tag")?tagIDToExclude=' + tagIDToExclude + '&showRoot=' + showRoot)
+                    .fail(ajaxErrorMessage)
+                    .done(function (data) {
+                        if (data && data.length) {
+                            for (var i = 0; i < data.length; i++) {
+                                var newOpt = $('<option>').attr('value', data[i].value).data('text', data[i].text).html(data[i].text);
+                                if (data[i].value == selectedTagID) newOpt.attr('selected', '');
+                                $sel.append(newOpt);
+                            }
+                            setDisableds(tagsToDisable);
+                        }
+                    })
+                    .always(function () {
+                        $('#tagSelectorWaiter').hide();
+                    });
+            }
+            else {
+                setDisableds(tagsToDisable);
+            }
+
+            $('#tagSelectorMdl').modal('show');
+        }
+    });
+</script>
