@@ -7,16 +7,9 @@
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.6",
     "bootstrap-select": "v1.12.2",
-    "eonasdan-bootstrap-datetimepicker": "v4.17.45",
-    "awesome-bootstrap-checkbox": "v0.3.7",
     "font-awesome": "Font-Awesome#~4.7.0",
     "urijs": "uri.js#v1.18.10",
-    "js-cookie": "v2.1.4",
-    "datatables.net": "~1.10.15",
-    "datatables.net-bs": "~2.1.1",
-    "datatables": "DataTables#1.10.15",
-    "select2": "select2-dist#4.0.3",
-    "select2-bootstrap-theme": "select2-bootstrap-theme-dist#0.1.0-beta.10"
+    "js-cookie": "v2.1.4"
   },
   "resolutions": {
     "jquery": ">= 1.7.2",

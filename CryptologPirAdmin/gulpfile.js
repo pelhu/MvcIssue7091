@@ -17,16 +17,8 @@ var gulp = require("gulp")/*,
 
 gulp.task("copyLibs:js", function (cb) {
     gulp.src([
-        './bower_lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css',
-        './bower_lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-        './bower_lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css',
-        './bower_lib/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.min.css',
         './bower_lib/bootstrap-select/dist/css/bootstrap-select.css',
         './bower_lib/bootstrap-select/dist/css/bootstrap-select.min.css',
-        './bower_lib/datatables.net-bs/css/dataTables.bootstrap.css',
-        './bower_lib/datatables.net-bs/css/dataTables.bootstrap.min.css',
-        './bower_lib/select2/dist/css/select2.css',
-        './bower_lib/select2-bootstrap-theme/dist/select2-bootstrap.css',
     ]).pipe(gulp.dest('./wwwroot/css'));
     gulp.src([
         './bower_lib/font-awesome/css/font-awesome.css',
@@ -39,22 +31,12 @@ gulp.task("copyLibs:js", function (cb) {
     ]).pipe(gulp.dest('./wwwroot/css/bootstrap/css'));
     gulp.src(['./bower_lib/bootstrap/fonts/*']).pipe(gulp.dest('./wwwroot/css/bootstrap/fonts'));
     gulp.src([
-        './node_modules/autosize/dist/autosize.js',
-        './node_modules/autosize/dist/autosize.min.js',
         './bower_lib/jquery/dist/jquery.js',
         './bower_lib/jquery/dist/jquery.min.js',
-        './bower_lib/moment/moment.js',
-        './bower_lib/moment/min/moment.min.js',
         './bower_lib/bootstrap/dist/js/bootstrap.js',
         './bower_lib/bootstrap/dist/js/bootstrap.min.js',
-        './bower_lib/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
-        './bower_lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         './bower_lib/bootstrap-select/dist/js/bootstrap-select.js',
         './bower_lib/bootstrap-select/dist/js/bootstrap-select.min.js',
-        './bower_lib/datatables.net/js/jquery.dataTables.js',
-        './bower_lib/datatables.net/js/jquery.dataTables.min.js',
-        './bower_lib/datatables.net-bs/js/dataTables.bootstrap.js',
-        './bower_lib/datatables.net-bs/js/dataTables.bootstrap.min.js',
         './bower_lib/urijs/src/URI.js',
         './bower_lib/urijs/src/URI.min.js',
         './bower_lib/jquery-validation/dist/jquery.validate.js',
